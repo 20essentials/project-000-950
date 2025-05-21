@@ -1,0 +1,28 @@
+---
+interface Props {
+  splashSrc?: string;
+  landscapeSrc?: string;
+}
+
+const {
+  splashSrc = '/assets/splash.jpg',
+  landscapeSrc = '/assets/landscape.avif'
+} = Astro.props;
+
+const splash = `url(${splashSrc})`;
+const landscape = `url(${landscapeSrc})`;
+---
+
+<section class='am-the-hero'></section>
+
+<style define:vars={{ splash, landscape }}>
+  .am-the-hero {
+    width: 100%;
+    height: 100dvh;
+    background-image: var(--landscape), var(--splash);
+    background-blend-mode: screen;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+</style>
